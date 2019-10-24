@@ -1,7 +1,7 @@
 <?php
 $is_auth = rand(0, 1);
 
-$user_name = 'Рохер'; // укажите здесь ваше имя
+$user_name = 'Рохер';
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -40,10 +40,10 @@ $user_name = 'Рохер'; // укажите здесь ваше имя
 
                 <ul class="user-menu__list">
                     <li class="user-menu__item">
-                    <a href="#">Регистрация</a>
+                        <a href="#">Регистрация</a>
                     </li>
                     <li class="user-menu__item">
-                    <a href="#">Вход</a>
+                        <a href="#">Вход</a>
                     </li>
                 </ul>
 
