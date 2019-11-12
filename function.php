@@ -18,18 +18,22 @@ function price_formatting($num) {
 * возвращает массив, где первый элемент — целое количество часов до даты, 
   а второй — остаток в минутах;
 */
-function count_time_remaining($date_end) {
+function count_time_remaining($init_date_str) {
     date_default_timezone_set('Europe/Moscow');
 
-    $date1 = new DateTime($date_end);
-    $date2 = new DateTime();
+    is_date_valid($init_date_str);
 
-    $interval = $date1->diff($date2);
+    $date_end = new DateTime($init_date_str);
+    $date_now = new DateTime();
 
-    $hours = str_pad(($interval->days * 24) + $interval->h, 2, '0', STR_PAD_LEFT);
-    $minutes = str_pad($interval->i, 2, '0', STR_PAD_LEFT);
+    if ($date_end > $date_now) {
+        $interval = $date_end->diff($date_now);
+        $hours = str_pad(($interval->days * 24) + $interval->h, 2, '0', STR_PAD_LEFT);
+        $minutes = str_pad($interval->i, 2, '0', STR_PAD_LEFT);
+    } else {
+        $hours = '00';
+        $minutes = '00';
+    }
 
-    $time_difference = [$hours, $minutes];
-
-    return $time_difference;
+    return [$hours, $minutes];
 }
