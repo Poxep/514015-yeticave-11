@@ -18,7 +18,7 @@ $goods = [
         'category' => 'Доски и лыжи',
         'price' => '159999',
         'url' => 'img/lot-2.jpg',
-        'timer' => '2019-11-15',
+        'timer' => '2019-11-16',
     ],
     [
         'name' => 'Крепления Union Contact Pro 2015 года размер L/XL',
