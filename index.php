@@ -7,7 +7,7 @@ $page_content = include_template('main.php', [
     'categories' => $categories,
     'goods' => $goods
 ]);
-$layput_content = include_template('layout.php', [
+$layout_content = include_template('layout.php', [
     'content' => $page_content,
     'is_auth' => $is_auth,
     'user_name' => $user_name,
@@ -15,5 +15,5 @@ $layput_content = include_template('layout.php', [
     'title' => 'YetiCave - Главная страница'
 ]);
 
-print($layput_content);
+print($layout_content);
 ?>

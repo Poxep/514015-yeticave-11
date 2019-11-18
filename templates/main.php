@@ -30,9 +30,20 @@
                         <span class="lot__amount">Стартовая цена</span>
                         <span class="lot__cost"><?= htmlspecialchars(price_formatting($card_element['price'])); ?></span>
                     </div>
-                    <div class="lot__timer timer">
-                        12:23
-                    </div>
+
+                <?php 
+                
+                $timer = count_time_remaining($card_element['timer']);
+                $class_timer_red = '';
+                
+                if ($timer[0] < 1) {
+                    $class_timer_red = 'timer--finishing';
+                }
+
+                ?>
+
+                <div class="lot__timer timer <?= $class_timer_red?>"><?= $timer[0] ?>:<?= $timer[1] ?></div>
+
                 </div>
             </div>
         </li>
