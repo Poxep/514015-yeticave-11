@@ -22,7 +22,7 @@ function count_time_remaining($init_date_str) {
     date_default_timezone_set('Europe/Moscow');
 
     if (is_date_valid($init_date_str) === false) {
-        echo 'Формат даты введен неверно!';
+        return ['--', '--'];
     };
 
     $date_end = new DateTime($init_date_str);
