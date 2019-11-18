@@ -19,7 +19,6 @@ CREATE INDEX i_code ON category (code);
 
 CREATE TABLE lot (
     lot_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    category_id INT NOT NULL,
     user_id INT NOT NULL,
     date_start DATETIME,
     title VARCHAR (255),
@@ -41,8 +40,6 @@ CREATE TABLE rate (
 
 CREATE TABLE user (
     user_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    lot_id INT NOT NULL,
-    rate_id INT NOT NULL,
     create_date DATETIME,
     email VARCHAR (128) NOT NULL,
     name VARCHAR (128) NOT NULL,
@@ -51,11 +48,8 @@ CREATE TABLE user (
 );
 CREATE UNIQUE INDEX i_email ON user (email);
 
-ALTER TABLE lot ADD FOREIGN KEY (category_id) REFERENCES category(category_id);
-ALTER TABLE lot ADD FOREIGN KEY (user_id) REFERENCES user(user_id);
+ALTER TABLE lot ADD FOREIGN KEY (lot_id) REFERENCES category(category_id);
+ALTER TABLE lot ADD FOREIGN KEY (lot_id) REFERENCES rate(lot_id);
 
-ALTER TABLE rate ADD FOREIGN KEY (lot_id) REFERENCES lot(lot_id);
-ALTER TABLE rate ADD FOREIGN KEY (user_id) REFERENCES user(user_id);
-
-ALTER TABLE user ADD FOREIGN KEY (lot_id) REFERENCES lot(lot_id);
-ALTER TABLE user ADD FOREIGN KEY (rate_id) REFERENCES rate(rate_id);
+ALTER TABLE user ADD FOREIGN KEY (user_id) REFERENCES lot(user_id);
+ALTER TABLE user ADD FOREIGN KEY (user_id) REFERENCES rate(user_id);
