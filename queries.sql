@@ -40,22 +40,19 @@ JOIN category c
 ON l.category_id = c.category_id
 LEFT JOIN rate r
 ON l.lot_id = r.lot_id
-WHERE l.date_end > '2019-11-21'
+WHERE l.date_end >= '2019-11-22';
 
 /* Показать лот по его id. Получите также название категории, к которой принадлежит лот */
-SELECT * FROM lot l
+SELECT l.lot_id, c.name FROM lot l
 JOIN category c
 ON l.lot_id = c.category_id
-WHERE lot_id = 3
 
 /* Обновить название лота по его идентификатору */
 UPDATE lot
 SET title = '_Крепления Union Contact Pro 2015 года размер L/XL'
-WHERE lot_id = 3
+WHERE lot_id = 3;
 
 /* Получить список ставок для лота по его идентификатору с сортировкой по дате */
-SELECT l.lot_id, r.date_add, price FROM rate r
-JOIN lot l
-ON r.lot_id = l.lot_id
-WHERE l.lot_id = 3
-ORDER BY r.date_add
+SELECT lot_id, date_add, price FROM rate
+WHERE lot_id = 3
+ORDER BY date_add;
