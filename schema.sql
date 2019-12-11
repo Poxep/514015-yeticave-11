@@ -6,14 +6,6 @@ CREATE TABLE category (
     name VARCHAR (128),
     code VARCHAR (128)
 );
-INSERT INTO category (name, code) VALUES
-    ('Доски и лыжи', 'boards'),
-    ('Крепления', 'attachment'),
-    ('Ботинки', 'boots'),
-    ('Одежда', 'clothing'),
-    ('Инструменты', 'tools'),
-    ('Разное', 'other');
-
 CREATE INDEX i_name ON category (name);
 CREATE INDEX i_code ON category (code);
 
@@ -27,7 +19,8 @@ CREATE TABLE lot (
     image_path VARCHAR (128),
     price_start INT NOT NULL,
     date_end DATETIME,
-    price_step INT NOT NULL
+    price_step INT NOT NULL,
+    winner VARCHAR(128) NULL
 );
 CREATE INDEX i_title_lot ON lot (title);
 
@@ -36,7 +29,7 @@ CREATE TABLE rate (
     lot_id INT NOT NULL,
     user_id INT NOT NULL,
     date_add DATETIME,
-    price INT NOT NULL
+    price_sum INT NOT NULL
 );
 
 CREATE TABLE user (
